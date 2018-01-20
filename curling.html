@@ -18,11 +18,19 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 
 function preload() {
 
-    // game.load.image('sky', 'assets/sky.png');
+    game.load.image('sky', 'assets/sky.png');
     // game.load.image('ground', 'assets/platform.png');
     // game.load.image('star', 'assets/star.png');
     // game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.image('target', 'assets/target.png');
+    game.load.image('red_stone', 'assets/red_stone.png');
+    game.load.image('yellow_stone', 'assets/yellow_stone.png');
+
+    game.load.image('vertical_line', 'assets/limit_height.png');
+    game.load.image('horizontal_line', 'assets/limit_width.png');
+
+
+
 
 }
 
@@ -33,8 +41,22 @@ function create() {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    game.add.sprite(0, 0, 'sky');
+
+
     //  A simple background for our game
     game.add.sprite(200, 150, 'target');
+
+    game.add.sprite(150, 595, 'horizontal_line');
+
+    game.add.sprite(150, 0, 'vertical_line');
+    game.add.sprite(650, 0, 'vertical_line');
+
+    limits = game.add.group();
+    limits.enableBody = true;
+
+
+
 
     // //  The platforms group contains the ground and the 2 ledges we can jump on
     // platforms = game.add.group();
