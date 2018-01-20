@@ -13,14 +13,14 @@
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
-   id="svg8"
+   id="svg3713"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="target.svg"
-   inkscape:export-filename="D:\Programmation\swaggy-unicorn-curling-game\assets\target.png"
+   sodipodi:docname="red_stone.svg"
+   inkscape:export-filename="D:\Programmation\swaggy-unicorn-curling-game\assets\red_stone.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
-     id="defs2" />
+     id="defs3707" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-71.802386"
-     inkscape:cy="435.7567"
+     inkscape:zoom="15.839192"
+     inkscape:cx="4.7698687"
+     inkscape:cy="19.760813"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,7 +40,7 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata5">
+     id="metadata3710">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -56,28 +56,16 @@
      inkscape:groupmode="layer"
      id="layer1">
     <circle
-       id="path3699"
-       cx="52.916668"
-       cy="244.08333"
-       style="stroke-width:0.17358558;fill:#0000ff"
-       r="52.916668" />
+       style="fill:#666666;stroke-width:0.01439704"
+       id="path3719"
+       cx="1.7197917"
+       cy="295.28021"
+       r="1.7197917" />
     <circle
-       style="fill:#f9f9f9;stroke-width:0.2288596"
-       id="path3701"
-       cx="52.652084"
-       cy="244.34792"
-       r="35.189583" />
-    <circle
-       style="fill:#ff0000;stroke-width:0.14722699"
-       id="path3703"
-       cx="52.784374"
-       cy="244.21562"
-       r="17.594791" />
-    <circle
-       style="fill:#ffffff;stroke-width:0.10383949"
-       id="path3705"
-       cx="53.092613"
-       cy="243.90738"
-       r="4.4092813" />
+       style="fill:#ff0000;stroke-width:0.17031775"
+       id="path3721"
+       cx="1.7197917"
+       cy="295.28021"
+       r="1.3229166" />
   </g>
 </svg>
