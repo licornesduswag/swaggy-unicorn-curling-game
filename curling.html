@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 
-var game = new Phaser.Game(600, 800, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(600, 800, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render});
 
 function preload() {
 
@@ -35,9 +35,17 @@ function preload() {
 }
 
 
-var limits, redStones, isStoneLaunched = false, redStone, redStone2;
+var limits, redStones, yellowStones, isRedTurn = false, isYellowTurn = false;
+
+var redStonesArray = [];
+var yellowStonesArray = [];
 
 var aimedX, aimedY;
+
+var redTurn = -1;
+var yellowTurn = -1;
+
+var maxTurn = 8;
 
 
 function create() {
@@ -68,8 +76,13 @@ function create() {
     redStones = game.add.group();
     redStones.enableBody = true;
 
-    redStone = redStones.create(300, -100, 'red_stone');
-    redStone2 = redStones.create(300, -100, 'yellow_stone');
+    yellowStones = game.add.group();
+    yellowStones.enableBody = true;
+
+    for (let i = 0; i < maxTurn; i++){
+      redStones.create(300, -100, 'red_stone');
+      yellowStones.create(300, -100, 'yellow_stone');
+    }
 
     game.input.onDown.add(launchStone, this);
 
@@ -119,88 +132,55 @@ function create() {
 
 function launchStone(){
   console.log("such woow");
-  isStoneLaunched = !isStoneLaunched;
-  aimedX = game.input.x;
-  aimedY = game.input.y;
+  isRedTurn = !isRedTurn;
+  if (isRedTurn){
+    redTurn++;
+    isYellowTurn = false;
+  }
+  else {
+    isYellowTurn = true;
+    yellowTurn++;
+  }
+
+  // Remove the size of the stone then the pointer aim the center
+  aimedX = game.input.x -50;
+  aimedY = game.input.y -50;
   console.log(aimedX);
   console.log(aimedY);
-  console.log(isStoneLaunched);
   return 'ta maman';
 }
 
 function update() {
 
-    	game.physics.arcade.collide(redStone, redStone2);
+      //Make stones in the same/different group collide each other
+      game.physics.arcade.collide(redStones);
+      game.physics.arcade.collide(yellowStones);
+      game.physics.arcade.collide(redStones, yellowStones);
 
-      game.physics.arcade.collide(redStone, limits, function(redStone, limits){
-        redStone.y = -50;
-        redStone.speed =0;
-
+      game.physics.arcade.collide(redStones, limits, function(redStone, limits){
+        redStone.kill();
       });
 
-      game.physics.arcade.collide(redStone2, limits, function(redStone, limits){
-        redStone2.y = -50;
-        redStone2.speed =0;
+      game.physics.arcade.collide(yellowStones, limits, function(yellowStone, limits){
+        yellowStone.kill();
       });
 
-   if (isStoneLaunched){
+   if (isRedTurn){
      console.log("bonjour");
-     game.physics.arcade.moveToXY(redStone, aimedX, aimedY, 10, 300, 300);
-   }else {
-     game.physics.arcade.moveToXY(redStone2, aimedX, aimedY, 10, 300, 300);
-
+      game.physics.arcade.moveToXY(redStones.children[redTurn], aimedX, aimedY, 10, 300, 300);
+   }else if (isYellowTurn){
+     game.physics.arcade.moveToXY(yellowStones.children[yellowTurn], aimedX, aimedY, 10, 300, 300);
    }
 
-    // //  Collide the player and the stars with the platforms
-    // var hitPlatform = game.physics.arcade.collide(player, platforms);
-    // game.physics.arcade.collide(stars, platforms);
-    //
-    // //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    // game.physics.arcade.overlap(player, stars, collectStar, null, this);
-    //
-    // //  Reset the players velocity (movement)
-    // player.body.velocity.x = 0;
-    //
-    // if (cursors.left.isDown)
-    // {
-    //     //  Move to the left
-    //     player.body.velocity.x = -150;
-    //
-    //     player.animations.play('left');
-    // }
-    // else if (cursors.right.isDown)
-    // {
-    //     //  Move to the right
-    //     player.body.velocity.x = 150;
-    //
-    //     player.animations.play('right');
-    // }
-    // else
-    // {
-    //     //  Stand still
-    //     player.animations.stop();
-    //
-    //     player.frame = 4;
-    // }
-    //
-    // //  Allow the player to jump if they are touching the ground.
-    // if (cursors.up.isDown && player.body.touching.down && hitPlatform)
-    // {
-    //     player.body.velocity.y = -350;
-    // }
+
 
 }
 
-function collectStar (player, star) {
-
-    // // Removes the star from the screen
-    // star.kill();
-    //
-    // //  Add and update the score
-    // score += 10;
-    // scoreText.text = 'Score: ' + score;
-
+function render() {
+  redStones.forEachAlive(game.debug.body,game.debug,"#ff9090",false);
 }
+
+
 
 </script>
 
