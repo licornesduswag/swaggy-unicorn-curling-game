@@ -35,59 +35,45 @@ function preload() {
 }
 
 
+var limits, redStones, isStoneLaunched = false, redStone, redStone2;
+
+var aimedX, aimedY;
+
 
 function create() {
 
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    //  A simple background for our game
     game.add.sprite(0, 0, 'ice');
 
 
-    //  A simple background for our game
     game.add.sprite(100, 200, 'target');
 
-    // game.add.sprite(50, 795, 'horizontal_line');
-    //
-    // game.add.sprite(150, 0, 'vertical_line');
-    // game.add.sprite(650, 0, 'vertical_line');
 
     limits = game.add.group();
     limits.enableBody = true;
 
     var bottomLimit = limits.create(50, 795, 'horizontal_line');
-    bottomLimit.immovable =  true;
+    bottomLimit.body.immovable =  true;
 
     var leftLimit = limits.create(50, 0, 'vertical_line');
-    leftLimit.immovable = true;
+    leftLimit.body.immovable = true;
 
     var rightLimit = limits.create(550, 0, 'vertical_line');
-    rightLimit.immovable = true;
+    rightLimit.body.immovable = true;
 
 
+    redStones = game.add.group();
+    redStones.enableBody = true;
+
+    redStone = redStones.create(300, -100, 'red_stone');
+    redStone2 = redStones.create(300, -100, 'yellow_stone');
+
+    game.input.onDown.add(launchStone, this);
 
 
-    // //  The platforms group contains the ground and the 2 ledges we can jump on
-    // platforms = game.add.group();
-    //
-    // //  We will enable physics for any object that is created in this group
-    // platforms.enableBody = true;
-    //
-    // // Here we create the ground.
-    // var ground = platforms.create(0, game.world.height - 64, 'ground');
-    //
-    // //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    // ground.scale.setTo(2, 2);
-    //
-    // //  This stops it from falling away when you jump on it
-    // ground.body.immovable = true;
-    //
-    // //  Now let's create two ledges
-    // var ledge = platforms.create(400, 400, 'ground');
-    // ledge.body.immovable = true;
-    //
-    // ledge = platforms.create(-150, 250, 'ground');
-    // ledge.body.immovable = true;
     //
     // // The player and its settings
     // player = game.add.sprite(32, game.world.height - 150, 'dude');
@@ -131,7 +117,39 @@ function create() {
 
 }
 
+function launchStone(){
+  console.log("such woow");
+  isStoneLaunched = !isStoneLaunched;
+  aimedX = game.input.x;
+  aimedY = game.input.y;
+  console.log(aimedX);
+  console.log(aimedY);
+  console.log(isStoneLaunched);
+  return 'ta maman';
+}
+
 function update() {
+
+    	game.physics.arcade.collide(redStone, redStone2);
+
+      game.physics.arcade.collide(redStone, limits, function(redStone, limits){
+        redStone.y = -50;
+        redStone.speed =0;
+
+      });
+
+      game.physics.arcade.collide(redStone2, limits, function(redStone, limits){
+        redStone2.y = -50;
+        redStone2.speed =0;
+      });
+
+   if (isStoneLaunched){
+     console.log("bonjour");
+     game.physics.arcade.moveToXY(redStone, aimedX, aimedY, 10, 300, 300);
+   }else {
+     game.physics.arcade.moveToXY(redStone2, aimedX, aimedY, 10, 300, 300);
+
+   }
 
     // //  Collide the player and the stars with the platforms
     // var hitPlatform = game.physics.arcade.collide(player, platforms);
