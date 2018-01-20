@@ -16,7 +16,7 @@
    id="svg3713"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="yellow_stone.svg"
-   inkscape:export-filename="D:\Programmation\swaggy-unicorn-curling-game\assets\red_stone.png"
+   inkscape:export-filename="D:\Programmation\swaggy-unicorn-curling-game\assets\yellow_stone.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -28,17 +28,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="4.7698687"
-     inkscape:cy="19.760813"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="229.9363"
+     inkscape:cy="501.39395"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="984"
-     inkscape:window-height="613"
-     inkscape:window-x="660"
-     inkscape:window-y="54"
-     inkscape:window-maximized="0" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata3710">
     <rdf:RDF>
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,19 +55,23 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:#666666;stroke-width:0.01439704"
-       id="path3719"
-       cx="1.7197917"
-       cy="295.28021"
-       r="1.7197917" />
-    <circle
-       style="fill:#ffcc00;stroke-width:0.17031775"
-       id="path3721"
-       cx="1.7197917"
-       cy="295.28021"
-       r="1.3229166"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+    <g
+       id="g39"
+       transform="matrix(7.6923078,0,0,7.6923078,0,-1987.6154)">
+      <circle
+         r="1.7197917"
+         cy="295.28021"
+         cx="1.7197917"
+         id="path3719"
+         style="fill:#666666;stroke-width:0.01439704" />
+      <circle
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         r="1.3229166"
+         cy="295.28021"
+         cx="1.7197917"
+         id="path3721"
+         style="fill:#ffcc00;stroke-width:0.17031775" />
+    </g>
   </g>
 </svg>
