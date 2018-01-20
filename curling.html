@@ -14,11 +14,11 @@
 
 <script type="text/javascript">
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(600, 800, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
 
-    game.load.image('sky', 'assets/sky.png');
+    game.load.image('ice', 'assets/dirty_ice.png');
     // game.load.image('ground', 'assets/platform.png');
     // game.load.image('star', 'assets/star.png');
     // game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
@@ -41,19 +41,28 @@ function create() {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    game.add.sprite(0, 0, 'sky');
+    game.add.sprite(0, 0, 'ice');
 
 
     //  A simple background for our game
-    game.add.sprite(200, 150, 'target');
+    game.add.sprite(100, 200, 'target');
 
-    game.add.sprite(150, 595, 'horizontal_line');
-
-    game.add.sprite(150, 0, 'vertical_line');
-    game.add.sprite(650, 0, 'vertical_line');
+    // game.add.sprite(50, 795, 'horizontal_line');
+    //
+    // game.add.sprite(150, 0, 'vertical_line');
+    // game.add.sprite(650, 0, 'vertical_line');
 
     limits = game.add.group();
     limits.enableBody = true;
+
+    var bottomLimit = limits.create(50, 795, 'horizontal_line');
+    bottomLimit.immovable =  true;
+
+    var leftLimit = limits.create(50, 0, 'vertical_line');
+    leftLimit.immovable = true;
+
+    var rightLimit = limits.create(550, 0, 'vertical_line');
+    rightLimit.immovable = true;
 
 
 
